@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="hero is-link is-fullheight-with-navbar">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title horizontal-center">
+                    Elite Dangerous Event LogBook Parser
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2 class="title">Parser Input</h2>
+            <p>Send you log here</p>
+            {{ form_start(form)}}
+                {{ form_widget(form.files)}}
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}
