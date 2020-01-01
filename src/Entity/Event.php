@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Entity\Interfaces\EventInterface;
 use DateTimeImmutable;
+use Exception;
 
 class Event implements EventInterface
 {
@@ -18,6 +19,22 @@ class Event implements EventInterface
      * @var string
      */
     private $event;
+
+    private $decoded;
+
+    /**
+     * Event constructor.
+     *
+     * @param array $decoded
+     *
+     * @throws Exception
+     */
+    public function __construct(array $decoded)
+    {
+        $this->timestamp = new DateTimeImmutable($decoded['timestamp']);
+        $this->event     = $decoded['event'];
+        $this->decoded   = $decoded;
+    }
 
     public function getTimestamp(): ?DateTimeImmutable
     {
@@ -42,6 +59,4 @@ class Event implements EventInterface
 
         return $this;
     }
-
-
 }

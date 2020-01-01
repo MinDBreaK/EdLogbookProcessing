@@ -39,16 +39,8 @@ class EventLogbookProcessor
 
             if ($class !== Event::class) {
                 $event = new $class($decoded);
-            }
-        }
-
-        if ($event === null) {
-            $event = new Event();
-            try {
-                $event->setEvent($decoded['event']);
-                $event->setTimestamp(new DateTimeImmutable($decoded['timestamp']));
-            } catch (Exception $e) {
-                return null;
+            } else {
+                $event = new Event($decoded);
             }
         }
 
