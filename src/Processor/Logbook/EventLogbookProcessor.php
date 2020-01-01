@@ -6,8 +6,6 @@ namespace App\Processor\Logbook;
 
 use App\Entity\Event;
 use App\Entity\Interfaces\EventInterface;
-use DateTimeImmutable;
-use Exception;
 
 class EventLogbookProcessor
 {
@@ -19,10 +17,10 @@ class EventLogbookProcessor
             return;
         }
 
-
+        $before = $decoded;
         $decoded = $this->createEntityFromDecoded($decoded);
         
-        dump($decoded);
+        dump([$before, $decoded]);
     }
 
     private function decodeRawEvent(string $raw): ?array

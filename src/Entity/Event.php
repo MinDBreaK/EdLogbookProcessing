@@ -20,8 +20,6 @@ class Event implements EventInterface
      */
     private $event;
 
-    private $decoded;
-
     /**
      * Event constructor.
      *
@@ -33,7 +31,6 @@ class Event implements EventInterface
     {
         $this->timestamp = new DateTimeImmutable($decoded['timestamp']);
         $this->event     = $decoded['event'];
-        $this->decoded   = $decoded;
     }
 
     public function getTimestamp(): ?DateTimeImmutable
